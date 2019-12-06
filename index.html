@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Logic Test</title>
+</head>
+
+<body>
+
+    <div id="container">
+        <h1>Pathfinder</h1>
+        <form>
+            <strong>INITIAL POSITION:</strong>
+            <input type="text" id="start" value="[0,0]" />
+            <strong>MAP:</strong>
+            <input type="text" id="grid" value="[[1,1,1,1],[0,1,1,0],[0,1,0,1],[0,1,9,1],[1,1,1,1]]" />
+
+            <button onclick="calculatePath();return false;">GO</button>
+        </form>
+
+        <hr />
+
+        <strong>RESULT:</strong>
+        <input type="text" disabled id="result">
+    </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="./pathfinding.js"></script>
+
+<script>
+    function calculatePath() {
+
+        var start = JSON.parse(document.getElementById("start").value);
+        var grid = JSON.parse(document.getElementById("grid").value);
+
+        var path = new Pathfinding(grid, start);
+
+        var result = path.findShortestPath();
+        var container = document.getElementById("result");
+        container.value = result;
+    }
+</script>
+
+</html>
